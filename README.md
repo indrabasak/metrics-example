@@ -7,4 +7,4 @@ TODO
 
 
 [travis-badge]: https://travis-ci.org/indrabasak/metrics-example.svg?branch=master
-[travis-badge-url]: https://travis-ci.org/indrabasak/metrics-example-parent
+[travis-badge-url]: https://travis-ci.org/indrabasak/metrics-example
