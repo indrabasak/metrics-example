@@ -15,6 +15,7 @@
         <maven-compiler-plugin-version>2.3.2</maven-compiler-plugin-version>
         <metrics.version>3.2.2</metrics.version>
         <sonar.jacoco.itReportPath>${basedir}/target/jacoco-it.exec</sonar.jacoco.itReportPath>
+        <sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
         <spring.boot.version>1.5.3.RELEASE</spring.boot.version>
         <swagger.version>2.6.1</swagger.version>
     </properties>
@@ -196,6 +197,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>1.5.3.RELEASE</version>
                 <configuration>
                     <fork>true</fork>
                     <mainClass>com.basaki.example.book.boot.BookApplication</mainClass>
@@ -211,7 +213,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.7.2.201409121644</version>
+                <version>0.7.9</version>
                 <executions>
                     <execution>
                         <id>pre-unit-test</id>
@@ -233,7 +235,7 @@
                             <goal>prepare-agent</goal>
                         </goals>
                         <configuration>
-                            <destFile>${sonar.jacoco.itReportPath}</destFile>
+                            <destFile>${sonar.jacoco.reportPath}</destFile>
                             <propertyName>failsafe.argLine</propertyName>
                         </configuration>
                     </execution>
@@ -244,7 +246,7 @@
                             <goal>report</goal>
                         </goals>
                         <configuration>
-                            <dataFile>${sonar.jacoco.itReportPath}</dataFile>
+                            <dataFile>${sonar.jacoco.reportPath}</dataFile>
                         </configuration>
                     </execution>
                 </executions>
@@ -278,6 +280,11 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.2</version>
             </plugin>
         </plugins>
     </build>
