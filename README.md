@@ -12,5 +12,7 @@ TODO
 [travis-badge]: https://travis-ci.org/indrabasak/metrics-example.svg?branch=master
 [travis-badge-url]: https://travis-ci.org/indrabasak/metrics-example
 
-[sonarqube-badge]: https://sonarcloud.io/dashboard/index/com.basaki.metrics:metrics-example
-[sonarqube-badge-url]: https://sonarcloud.io/api/badges/gate?key=com.basaki.metrics:metrics-example
+[sonarqube-badge]: https://sonarcloud.io/api/badges/gate?key=com.basaki.metrics:metrics-example
+[sonarqube-badge-url]: https://sonarcloud.io/dashboard/index/com.basaki.metrics:metrics-example 
+
+
