@@ -14,8 +14,7 @@
         <lombok.version>1.16.16</lombok.version>
         <maven-compiler-plugin-version>2.3.2</maven-compiler-plugin-version>
         <metrics.version>3.2.2</metrics.version>
-        <sonar.jacoco.itReportPath>${basedir}/target/jacoco-it.exec</sonar.jacoco.itReportPath>
-        <sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
+        <sonar.jacoco.reportPath>${project.basedir}/target/jacoco.exec</sonar.jacoco.reportPath>
         <spring.boot.version>1.5.3.RELEASE</spring.boot.version>
         <swagger.version>2.6.1</swagger.version>
     </properties>
@@ -216,6 +215,19 @@
                 <version>0.7.9</version>
                 <executions>
                     <execution>
+                        <id>default-prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>default-report</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                    <execution>
                         <id>pre-unit-test</id>
                         <goals>
                             <goal>prepare-agent</goal>
@@ -257,7 +269,8 @@
                 <version>2.19.1</version>
                 <configuration>
                     <includes>
-                        <include>**/*UnitTests.java</include>
+                        <include>**/*Test.java</include>
+                        <include>**/*Tests.java</include>
                     </includes>
                 </configuration>
             </plugin>

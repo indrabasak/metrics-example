@@ -1,10 +1,15 @@
-# Travis Build File
 language: java
 jdk:
   - oraclejdk8
+addons:
+  sonarqube:
+    organization: indrabasak-github
+    token:
+      secure: QxBHiYzULXd6MzjVTkMdkGDvpDSLaqCK+yECff7fJ6gmZdk0GEXIoGaR9cN2blT2MxpQ7wmkBh8Hs3ZTr3CdRnq1XEVn4PtRRya0xm7fq9/YpYTvnULlUUQuQbyKoQ/FD4Bul1qNEckxTnU27lfwCrXsL/RuMAgG4ZwSqliyoU+7CF0oVKl8d2t2oFwPCmFA9M+/fmQvrq9JT4UmtpZb9pk3HVNP6q3VBUYqpcnnUTxAPoujiG48x8RjSpiHGwlCOtUmT/rP16Xgg49HeLe93rLxiXTzogqmZVmfrpqpcOyT9Rjmb1Wc6ABg9yre9XxdsiM2UaUwz8dHcKNHqeasbElPpvkvqZ6/LwspWH2ONjr5Kpo5De6lAJo19vxfqtV+GaQ+mWfKGoA+/KxbafC/DayFsadHdWrDHQxydv5LZi2zXoX+g9k9C7WXnhu2Qji7rPFysBIgaXLyojiqsTiC7FwSUDu95xrHuecJc6EDmVdrSg2EtHt0Oc/qRPWeBxVAyP59MZ11IeW+22NtaN696Da+F/NcTJNmYUywT5V9dPGR+OO3RFITCXgGUUlCx6y412XT9UO1/cN4E1H7UnL+SyBD4GaRNbRIzJoZ11ZNPvJoCSOMVtIl/hWtGKAPNGmyizOKivgGZPY5wGyqebUymujw/QHUdPtyyi4rr67Q6Fw=
 before_script:
   - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-script: mvn clean compile test
+script:
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
 notifications:
   email:
     - indra.basak1@gmail.com

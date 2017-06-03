@@ -1,6 +1,5 @@
 package com.basaki.example.book.error;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,7 +13,6 @@ import lombok.Setter;
  * @since 3/18/17
  */
 @NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
 public class ErrorInfo {
