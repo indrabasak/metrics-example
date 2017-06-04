@@ -17,6 +17,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * {@code BookServiceIntegrationTest} integration test class for {@link
@@ -55,7 +56,7 @@ public class BookServiceIntegrationTest {
         Book book2 = service.read(book.getId());
         assertNotNull(book2);
         assertNotNull(book2.getId());
-        validate(book, book2);
+        assertTrue(book.equals(book2));
     }
 
     @Test
@@ -168,6 +169,7 @@ public class BookServiceIntegrationTest {
         assertEquals(expected.getTitle(), actual.getTitle());
         assertEquals(expected.getGenre(), actual.getGenre());
         assertEquals(expected.getPublisher(), actual.getPublisher());
+        assertEquals(expected.getStar(), actual.getStar());
 
         assertNotNull(expected.getAuthor());
         assertNotNull(actual.getAuthor());
