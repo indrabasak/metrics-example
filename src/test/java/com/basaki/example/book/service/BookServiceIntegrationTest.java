@@ -1,0 +1,144 @@
+package com.basaki.example.book.service;
+
+import com.basaki.example.book.boot.BookApplication;
+import com.basaki.example.book.error.DataNotFoundException;
+import com.basaki.example.book.model.Author;
+import com.basaki.example.book.model.Book;
+import com.basaki.example.book.model.BookRequest;
+import com.basaki.example.book.model.Genre;
+import java.util.List;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+/**
+ * {@code BookServiceIntegrationTest} integration test class for {@link
+ * BookService}.
+ * <p/>
+ *
+ * @author Indra Basak
+ * @since 6/3/17
+ */
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = BookApplication.class)
+@ActiveProfiles("test")
+public class BookServiceIntegrationTest {
+
+    @Autowired
+    private BookService service;
+
+    @Test
+    public void testCreate() {
+        service.deleteAll();
+
+        BookRequest request = getBookRequest();
+        Book book = service.create(request);
+        validate(request, book);
+    }
+
+    @Test
+    public void testRead() {
+        service.deleteAll();
+
+        BookRequest request = getBookRequest();
+        Book book = service.create(request);
+        assertNotNull(book);
+        assertNotNull(book.getId());
+
+        Book book2 = service.read(book.getId());
+        assertNotNull(book2);
+        assertNotNull(book2.getId());
+        validate(book, book2);
+    }
+
+    @Test
+    public void testReadAll() {
+        service.deleteAll();
+
+        BookRequest request = getBookRequest();
+        Book book = service.create(request);
+        assertNotNull(book);
+        assertNotNull(book.getId());
+
+        List<Book>
+                books = service.readAll(book.getTitle(), book.getGenre(),
+                book.getPublisher(),
+                book.getAuthor().getFirstName(),
+                book.getAuthor().getLastName());
+        assertNotNull(books);
+        assertEquals(1, books.size());
+        assertNotNull(books.get(0));
+        assertNotNull(books.get(0).getId());
+        validate(book, books.get(0));
+    }
+
+    @Test
+    public void testUpdate() {
+        service.deleteAll();
+
+        BookRequest request = getBookRequest();
+        Book book = service.create(request);
+        assertNotNull(book);
+        assertNotNull(book.getId());
+
+        request.setStar(5);
+        service.update(book.getId(), request);
+        Book book2 = service.read(book.getId());
+        assertNotNull(book2);
+        assertNotNull(book2.getId());
+        assertEquals(book.getId(), book2.getId());
+        validate(book, book2);
+        assertEquals(5, book2.getStar());
+    }
+
+    @Test(expected = DataNotFoundException.class)
+    public void testDelete() {
+        service.deleteAll();
+
+        BookRequest request = getBookRequest();
+        Book book = service.create(request);
+        assertNotNull(book);
+        assertNotNull(book.getId());
+
+        service.delete(book.getId());
+
+        service.read(book.getId());
+    }
+
+    private void validate(BookRequest expected, Book actual) {
+        assertNotNull(expected);
+        assertNotNull(actual);
+        assertNotNull(actual.getId());
+        assertEquals(expected.getTitle(), actual.getTitle());
+        assertEquals(expected.getGenre(), actual.getGenre());
+        assertEquals(expected.getPublisher(), actual.getPublisher());
+
+        assertNotNull(expected.getAuthor());
+        assertNotNull(actual.getAuthor());
+        assertEquals(expected.getAuthor().getFirstName(),
+                actual.getAuthor().getFirstName());
+        assertEquals(expected.getAuthor().getLastName(),
+                actual.getAuthor().getLastName());
+    }
+
+    private BookRequest getBookRequest() {
+        BookRequest book = new BookRequest();
+        book.setTitle("Ethan Frome");
+        book.setGenre(Genre.DRAMA);
+        book.setPublisher("Scribner's");
+        book.setStar(5);
+
+        Author author = new Author();
+        author.setFirstName("Edith");
+        author.setLastName("Wharton");
+        book.setAuthor(author);
+
+        return book;
+    }
+}

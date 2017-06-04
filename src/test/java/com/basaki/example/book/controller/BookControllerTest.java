@@ -22,7 +22,7 @@ import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
 /**
- * {@code BookControllerUnitTests} unit test class for {@code BookController}.
+ * {@code BookControllerUnitTest} unit test class for {@link BookController}.
  * <p/>
  *
  * @author Indra Basak

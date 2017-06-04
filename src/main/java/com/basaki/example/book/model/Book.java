@@ -17,13 +17,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class Book {
+public class Book extends BookRequest {
 
     private UUID id;
-    private String title;
-    private Genre genre;
-    private String publisher;
-    private int star;
-    private Author author;
     private String match;
 }
