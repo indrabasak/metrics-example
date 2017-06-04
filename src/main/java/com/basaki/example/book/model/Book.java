@@ -2,7 +2,6 @@ package com.basaki.example.book.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.UUID;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -15,7 +14,6 @@ import lombok.NoArgsConstructor;
  */
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Book extends BookRequest {
 

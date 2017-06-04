@@ -15,13 +15,6 @@ info:
 server:
   port: 8080
 
-datasource:
-  validationQuery: SELECT 1
-  initialSize: 1
-  maxActive: 3
-  testWhileIdle: true
-  testOnBorrow: true
-
 jpa:
   show-sql: true
   format_sql: true

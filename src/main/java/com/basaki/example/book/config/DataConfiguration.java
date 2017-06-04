@@ -33,46 +33,6 @@ public class DataConfiguration {
     };
 
     @Setter
-    @Value("${datasource.initialSize:1}")
-    private int initialSize;
-
-    @Setter
-    @Value("${datasource.maxActive:3}")
-    private int maxActive;
-
-    @Setter
-    @Value("${datasource.validationQuery:SELECT 1}")
-    private String validationQuery;
-
-    @Setter
-    @Value("${datasource.testWhileIdle:true}")
-    private boolean testWhileIdle;
-
-    @Setter
-    @Value("${datasource.testOnBorrow:true}")
-    private boolean testOnBorrow;
-
-    @Setter
-    @Value("${datasource.timeBetweenEvictionRunsMillis:10000}")
-    private int timeBetweenEvictionRunsMillis;
-
-    @Setter
-    @Value("${datasource.defaultTransactionIsolation:2}")
-    private int defaultTransactionIsolation;
-
-    @Setter
-    @Value("${datasource.minEvictableIdleTimeMillis:600000}")
-    private int minEvictableIdleTimeMillis;
-
-    @Setter
-    @Value("${datasource.defaultReadOnly:false}")
-    private boolean defaultReadOnly;
-
-    @Setter
-    @Value("${datasource.maxIdle:1}")
-    private int maxIdle;
-
-    @Setter
     @Value("${jpa.hbm2ddl.auto:none}")
     private String hbm2ddlAuto;
 
