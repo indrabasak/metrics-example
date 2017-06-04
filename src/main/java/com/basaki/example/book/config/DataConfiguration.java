@@ -44,6 +44,7 @@ public class DataConfiguration {
     @Value("${jpa.format_sql:true}")
     private boolean formatSql;
 
+    @Setter
     @Value("${jpa.properties.org.hibernate.flushMode:COMMIT}")
     private String flushMode;
 
