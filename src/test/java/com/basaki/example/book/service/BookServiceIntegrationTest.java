@@ -79,6 +79,11 @@ public class BookServiceIntegrationTest {
         validate(book, books.get(0));
     }
 
+    @Test(expected = DataNotFoundException.class)
+    public void testUnsuccessfulReadAll() {
+        service.readAll("hello", null, null, null, "zero");
+    }
+
     @Test
     public void testUpdate() {
         service.deleteAll();
@@ -118,6 +123,11 @@ public class BookServiceIntegrationTest {
         service.delete(book.getId());
 
         service.read(book.getId());
+    }
+
+    @Test(expected = DataNotFoundException.class)
+    public void testUnsuccessfulDelete() {
+        service.delete(UUID.randomUUID());
     }
 
     @Test
