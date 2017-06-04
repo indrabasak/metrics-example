@@ -7,6 +7,7 @@ import com.basaki.example.book.model.Book;
 import com.basaki.example.book.model.BookRequest;
 import com.basaki.example.book.model.Genre;
 import java.util.List;
+import java.util.UUID;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -98,6 +99,14 @@ public class BookServiceIntegrationTest {
     }
 
     @Test(expected = DataNotFoundException.class)
+    public void testUnsuccessfulUpdate() {
+        service.deleteAll();
+
+        BookRequest request = getBookRequest();
+        service.update(UUID.randomUUID(), request);
+    }
+
+    @Test(expected = DataNotFoundException.class)
     public void testDelete() {
         service.deleteAll();
 
@@ -109,6 +118,19 @@ public class BookServiceIntegrationTest {
         service.delete(book.getId());
 
         service.read(book.getId());
+    }
+
+    @Test
+    public void testGetPublisher() {
+        service.deleteAll();
+
+        BookRequest request = getBookRequest();
+        Book book = service.create(request);
+
+        List<String> publishers = service.getPublisher(book.getPublisher());
+        assertNotNull(publishers);
+        assertEquals(1, publishers.size());
+        assertEquals(book.getPublisher(), publishers.get(0));
     }
 
     private void validate(BookRequest expected, Book actual) {
