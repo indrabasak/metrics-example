@@ -18,5 +18,4 @@ import lombok.NoArgsConstructor;
 public class Book extends BookRequest {
 
     private UUID id;
-    private String match;
 }
