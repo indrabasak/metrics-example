@@ -79,6 +79,24 @@ public class BookServiceIntegrationTest {
         validate(book, books.get(0));
     }
 
+    @Test
+    public void testReadAllWithNullParams() {
+        service.deleteAll();
+
+        BookRequest request = getBookRequest();
+        Book book = service.create(request);
+        assertNotNull(book);
+        assertNotNull(book.getId());
+
+        List<Book>
+                books = service.readAll(null, null, null, null, null);
+        assertNotNull(books);
+        assertEquals(1, books.size());
+        assertNotNull(books.get(0));
+        assertNotNull(books.get(0).getId());
+        validate(book, books.get(0));
+    }
+
     @Test(expected = DataNotFoundException.class)
     public void testUnsuccessfulReadAll() {
         service.readAll("hello", null, null, null, "zero");

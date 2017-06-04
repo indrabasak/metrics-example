@@ -7,6 +7,7 @@ import org.springframework.test.context.ActiveProfiles;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 /**
  * {@code UuidBeanFactoryTest} unit test class for {@link UuidBeanFactory}.
@@ -32,5 +33,11 @@ public class UuidBeanFactoryTest {
 
         assertNotNull(actual);
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testCreateBeanForNull() {
+        Object actual = factory.createBean(null, UUID.class, null);
+        assertNull(actual);
     }
 }
