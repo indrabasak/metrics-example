@@ -27,3 +27,12 @@ metrics:
   report:
     http: true
     jmx: true
+
+jolokia:
+  config:
+    debug: true
+
+#enables jolokia
+management:
+  security:
+    enabled: false
