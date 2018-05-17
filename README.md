@@ -14,13 +14,13 @@ TODO
 [travis-badge]: https://travis-ci.org/indrabasak/metrics-example.svg?branch=master
 [travis-badge-url]: https://travis-ci.org/indrabasak/metrics-example
 
-[sonarqube-badge]: https://sonarcloud.io/api/badges/gate?key=com.basaki.metrics:metrics-example
+[sonarqube-badge]: https://sonarcloud.io/api/project_badges/measure?project=com.basaki.metrics%3Ametrics-example&metric=alert_status
 [sonarqube-badge-url]: https://sonarcloud.io/dashboard/index/com.basaki.metrics:metrics-example 
 
-[technical-debt-ratio-badge]: https://sonarcloud.io/api/badges/measure?key=com.basaki.metrics:metrics-example&metric=sqale_debt_ratio
+[technical-debt-ratio-badge]: https://sonarcloud.io/api/project_badges/measure?project=com.basaki.metrics%3Ametrics-example&metric=sqale_index
 [technical-debt-ratio-badge-url]: https://sonarcloud.io/dashboard/index/com.basaki.metrics:metrics-example 
 
-[coverage-badge]: https://sonarcloud.io/api/badges/measure?key=com.basaki.metrics:metrics-example&metric=coverage
+[coverage-badge]: https://sonarcloud.io/api/project_badges/measure?project=com.basaki.metrics%3Ametrics-example&metric=coverage
 [coverage-badge-url]: https://sonarcloud.io/dashboard/index/com.basaki.metrics:metrics-example
 
 
